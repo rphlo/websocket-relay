@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSMpeg Stream Client</title>
+  <link rel="stylesheet" type="text/css" href="{{ static_url('style.css') }}">
+</head>
+<body>
+  <canvas id="video-canvas"></canvas>
+  <script src="{{ static_url('jsmpeg.min.js') }}"></script>
+  <script type="text/javascript">
+    var canvas = document.getElementById('video-canvas');
+    var url = 'ws://'+document.location.host+'/streamsocket';
+    var player = new JSMpeg.Player(url, {canvas: canvas});
+  </script>
+</body>
+</html>

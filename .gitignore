@@ -1,0 +1,17 @@
+build
+*CACHE*
+dist
+MANIFEST
+.coverage
+*.pyc
+*.egg-info
+*.egg
+*.sqlite3
+*~
+*.save
+*.save.*
+*.idea
+env/
+htmlcov/
+doc/_build/
+
