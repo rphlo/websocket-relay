@@ -1,6 +1,6 @@
-# Live MPEG Relay – MPEG1 Video & MP2 Audio Decoder in JavaScript
+# Websocket Relay, HTTP to Websocket for Live Streaming Solutions
 
-## Streaming via WebSockets
+## Video Streaming via WebSockets
 
 JSMpeg can connect to a WebSocket server that sends out binary MPEG-TS data. When streaming, JSMpeg tries to keep latency as low as possible - it immediately decodes everything it has, ignoring video and audio timestamps altogether. To keep everything in sync (and latency low), audio data should be interleaved between video frames very frequently (`-muxdelay` in ffmpeg).
 
