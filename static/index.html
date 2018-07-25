@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSMpeg Stream Client</title>
-  <link rel="stylesheet" type="text/css" href="{{ static_url('style.css') }}">
+  <meta	charset="utf-8"/>
+  <title>WSX Live Webcam</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <canvas id="video-canvas"></canvas>
-  <script src="{{ static_url('jsmpeg.min.js') }}"></script>
+  <script src="jsmpeg.min.js"></script>
   <script type="text/javascript">
     var canvas = document.getElementById('video-canvas');
     var url = 'wss://'+document.location.host+'/streamsocket';

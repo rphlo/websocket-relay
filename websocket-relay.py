@@ -48,6 +48,9 @@ class StreamHandler(tornado.web.RequestHandler):
 class SocketHandler(tornado.websocket.WebSocketHandler):
     waiters = set()
 
+    def check_origin(self, origin):
+        return True
+
     def select_subprotocol(self, subprotocol):
         return subprotocol[0]
 
