@@ -18,7 +18,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", MainHandler),
             (r"/upload/(.*)", StreamHandler),
-            (r"/streamsocket", SocketHandler),
+            (r"/live.ts", SocketHandler),
         ]
         settings = dict(
             template_path=os.path.join(os.path.dirname(__file__), 'templates'),
@@ -51,15 +51,17 @@ class SocketHandler(tornado.websocket.WebSocketHandler):
     def check_origin(self, origin):
         return True
 
-    def select_subprotocol(self, subprotocol):
-        return subprotocol[0]
-
     def open(self):
         SocketHandler.waiters.add(self)
         logging.info(
             'New WebSocket Connection: %d total',
             len(SocketHandler.waiters)
         )
+
+    def select_subprotocol(self, subprotocol):
+        if len(subprotocol):
+            return subprotocol[0]
+        return super().select_subprotocol(subprotocol)
 
     def on_message(self, message):
         pass

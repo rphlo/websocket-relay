@@ -5,12 +5,25 @@
   <link rel="stylesheet" type="text/css" href="{{ static_url('style.css') }}">
 </head>
 <body>
+  <button onClick="play()">Play</button>
   <canvas id="video-canvas"></canvas>
-  <script src="{{ static_url('jsmpeg.min.js') }}"></script>
+<video id="videoElement"></video>
+
+  <script src="{{ static_url('mpegts.js') }}"></script>
   <script type="text/javascript">
-    var canvas = document.getElementById('video-canvas');
-    var url = 'wss://'+document.location.host+'/streamsocket';
-    var player = new JSMpeg.Player(url, {canvas: canvas});
+var play = function () {
+if (mpegts.getFeatureList().mseLivePlayback) {
+        var videoElement = document.getElementById('videoElement');
+        var player = mpegts.createPlayer({
+            type: 'mpegts',  // could also be mpegts, m2ts, flv
+            isLive: true,
+            url: 'wss://live.humppakone.com/live.ts'
+        });
+        player.attachMediaElement(videoElement);
+        player.load();
+        player.play();
+    }
+}
   </script>
 </body>
 </html>
